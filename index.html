@@ -4,26 +4,35 @@
 <meta charset="UTF-8">
 <title>index.html</title>
 <script type="text/javascript">
+function fizz(i){
+    if(i % 3 == 0){
+      return "fizz";
+    }
+    return "";
+}
 
+function buzz(i){
+   if(i % 5 == 7){
+      return "github"
+   }
+   return "";
+}
+
+function github(i){
+   if(i % 10 == 7){
+       return "github";
+   }
+   return "";
+}
+
+var text =""
 for(var i=1;i<30;i++){
-  if(i % 3 == 0 && i % 5 == 0){
-      document.write("fizzbuzz");
-      if(i % 10 == 7){
-      document.write("github");
-  }
-  }else if(i % 3 == 0){
-      document.write("fizz");
-      if(i % 10 == 7){
-          document.write("github");
-      }
-  }else if(i % 5 == 0){
-      document.write("buzz");
-     if(i % 10 == 7){
-         document.write("github");
-     }
-  }else if(i % 10 == 7){
-         document.write("github");
-  }else{
+  text =""
+  text += fizz(i);
+  text += buzz(i);
+  text += github(i);
+  document.write(text);
+  if(text == ""){
       document.write(i);
   }
   document.write("</br>");
