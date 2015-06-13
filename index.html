@@ -4,23 +4,33 @@
 <meta charset="UTF-8">
 <title>index.html</title>
 <script type="text/javascript">
+
 for(var i=1;i<30;i++){
   if(i % 3 == 0 && i % 5 == 0){
       document.write("fizzbuzz");
+      if(i % 10 == 7){
+      document.write("github");
+  }
   }else if(i % 3 == 0){
       document.write("fizz");
+      if(i % 10 == 7){
+          document.write("github");
+      }
   }else if(i % 5 == 0){
       document.write("buzz");
-  }else if(i % 7 == 0){
-      document.write("github");
+     if(i % 10 == 7){
+         document.write("github");
+     }
+  }else if(i % 10 == 7){
+         document.write("github");
   }else{
       document.write(i);
   }
   document.write("</br>");
 }
+
 </script>
 </head>
 <body>
-Hello world. 
 </body>
 </html>
