@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>FizzBuzz.html</title>
+<script type="text/javascript">
+for(var x=1; x<=30; x++) {
+	var out = "";
+	if (String(x).indexOf("7") >= 0) {
+		out = "github";
+	}
+	if (x % 3 == 0 && x % 5 ==0) {
+		out += "fizzbuzz";
+	}
+	else if (x % 3 == 0) {
+		out += "fizz";
+	}
+	else if (x % 5 == 0) {
+		out += "buzz";
+	}
+	document.write((out == "" ? x : out) + "<br>");
+}
+</script>
+</head>
+<body>
+</body>
+</html>

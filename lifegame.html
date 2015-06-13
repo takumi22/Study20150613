@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Life Game</title>
+<script type="text/javascript">
+
+window.onload = function() {
+
+    var canvas = document.getElementById("idCanvas"),
+        context = canvas.getContext('2d'),
+        FPS = 20;
+
+    var LifeGame = {
+        _size: 10,
+        _cellSize: 6,
+        _cell: [],
+
+        // 初期化
+        init: function(size) {
+            this._size = size;
+            for (var idx=0; idx<this._size; idx++) {
+                this._cell[idx] = [];
+                for (var jdx=0; jdx<this._size; jdx++) {
+
+                    // ランダムに初期値設定
+                    if (Math.floor( Math.random() * 2 ) == 1) {
+                        this._cell[idx][jdx] = true;
+                    }
+                    else {
+                        this._cell[idx][jdx] = false;
+                    }
+                }
+            }
+            this._draw();
+        },
+
+        // 生死チェック
+        deadOrAlive: function() {
+            var cell = [],
+                liveCell = [],
+                deadCell = [],
+                score;
+
+            this._draw();
+        },
+
+        // 周辺のオブジェクトを返す
+        _Surround: function(){
+            var x, y,
+                range = [[0, -1], [0, 1], [-1, 0], [1, 0],[-1, -1], [1, -1], [1, 1], [-1, 1]],
+                array = [];
+            for(var idx=0; idx<range.length; idx++) {
+                x = arguments[ 0] + range[idx][ 0];
+                y = arguments[ 1] + range[idx][ 1];
+
+                if (this._isObject(x,y)) {
+                    array.push([x,y]);
+                }
+            }
+            return array;
+        },
+
+        // オブジェクトを存在をチェック
+        _isObject: function(){
+            for (var idx=0; idx<arguments.length; idx++) {
+                if (arguments[idx] < 0 || arguments[idx] >= this._size) {
+                    return false;
+                }
+            }
+            return true;
+        },
+
+        // 描画
+        _draw: function(){
+            context.beginPath();
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            for(var idx=0; idx<this._size; idx++) {
+                for(var jdx=0; jdx<this._size; jdx++) {
+                    if ( this._cell[idx][jdx] ) {
+                        context.fillStyle = "rgb(0, 0, 0)";
+                        context.fillRect(idx * this._cellSize, jdx * this._cellSize, this._cellSize, this._cellSize);
+                    }
+                }
+            }
+        }
+    }
+
+    LifeGame.init(100);
+    setInterval(function() {LifeGame.deadOrAlive();}, 1000 / FPS);    
+}
+</script> 
+</head>
+<body>
+<canvas id="idCanvas" width="600" height="600"></canvas>
+</body>
+</html>
