@@ -4,11 +4,34 @@
 <meta charset="UTF-8">
 <title>bowling</title>
 <script type="text/javascript">
+function calc(){
+   document.write(document.throw1.value + document.throw2.value); 
+ var throw1 = parseInt(document.getElementById("throw1").value);
+ var throw2 = parseInt(document.getElementById("throw2").value);
+ if(throw1 > 10 || throw2 > 10 || (throw1 + throw2) > 10){
+     document.getElementById("point").value = "10以上の数値が入力されています";
+ }else if(isNaN(throw1) || isNaN(throw2)){
+     document.getElementById("point").value = "入力が不正です";
+ }else{
+     if(throw1 == 10){
+         document.getElementById("point").value = "ストライク";
+     }else if(throw1 + throw2 == 10){
+         document.getElementById("point").value = "スペア";
+     }else{
+         document.getElementById("point").value = (throw1 + throw2) + "点です";
+     }
+ }
+}
+
 </script>
 </head>
 <body>
 <input type="text" id="throw1">
 <input type="text" id="throw2">
-<button value="calc">
+<button value="calc" onClick="calc()">calc</button>
+
+</br>
+得点<input type="text" id="point" readonly="1" style="width:250px">
+
 </body>
 </html>
