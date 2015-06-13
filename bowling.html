@@ -9,16 +9,16 @@ function calc(){
  var throw1 = parseInt(document.getElementById("throw1").value);
  var throw2 = parseInt(document.getElementById("throw2").value);
  if(throw1 > 10 || throw2 > 10 || (throw1 + throw2) > 10){
-     document.getElementById("point").value = "10以上の数値が入力されています";
+     document.getElementById("point").value = "More than 10 of then you can not enter a number";
  }else if(isNaN(throw1) || isNaN(throw2)){
-     document.getElementById("point").value = "入力が不正です";
+     document.getElementById("point").value = "Input is invalid";
  }else{
      if(throw1 == 10){
-         document.getElementById("point").value = "ストライク";
+         document.getElementById("point").value = "Strike";
      }else if(throw1 + throw2 == 10){
-         document.getElementById("point").value = "スペア";
+         document.getElementById("point").value = "Spare";
      }else{
-         document.getElementById("point").value = (throw1 + throw2) + "点です";
+         document.getElementById("point").value = (throw1 + throw2) + "points";
      }
  }
 }
@@ -31,7 +31,7 @@ function calc(){
 <button value="calc" onClick="calc()">calc</button>
 
 </br>
-得点<input type="text" id="point" readonly="1" style="width:250px">
+<input type="text" id="point" readonly="1" style="width:250px">
 
 </body>
 </html>
